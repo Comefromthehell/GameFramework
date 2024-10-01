@@ -78,8 +78,8 @@ namespace UnityGameFramework.Runtime
                     Log.Error("Can not find procedure type '{0}'.", m_AvailableProcedureTypeNames[i]);
                     yield break;
                 }
-
-                procedures[i] = (ProcedureBase)Activator.CreateInstance(procedureType);
+                var instance = Activator.CreateInstance(procedureType) as ProcedureBase;
+                procedures[i] = instance;
                 if (procedures[i] == null)
                 {
                     Log.Error("Can not create procedure instance '{0}'.", m_AvailableProcedureTypeNames[i]);
